@@ -1,11 +1,8 @@
-%set(groot, 'defaultAxesTickLabelInterpreter','latex'); 
-%set(groot, 'defaultLegendInterpreter','latex');
-%set(0,'defaultTextInterpreter','latex');
-%set(gcf, 'renderer','painters');
-
-
-
-%set(groot, 'defaultTitleInterpreter','latex');
+% This script shows the fiber loss
+% MoreInfo: Chapter 2 of Optical Communications, section 2.1 Loss and
+% Bandwidth Windows from the Optical Networks Reference Book.
+%            
+% Author: Fabián Astudillo <fabian.astudillos@ucuenca.edu.ec>
 
 addpath('./functions/');
 
@@ -31,14 +28,14 @@ for i=1:n
     legStr(i) = cellstr(name);
 end
 
-legend(legStr,'Location','northeast','fontsize',12);
+legend(legStr,'Location','northeast','fontsize',12, 'Interpreter','latex');
 
-title('Attenuation');
+title('Attenuation','FontSize', 16, 'Interpreter','latex');
 set(gca, 'XTick', [0:50:200])
-ylabel('$P_{out}$ ($W$)');
-xlabel('Long ($Km$)');
+ylabel('$P_{out}$ ($W$)','FontSize', 16, 'Interpreter','latex');
+xlabel('Long ($Km$)','FontSize', 16, 'Interpreter','latex');
 
-goodplot;
+%goodplot;
 
 %set(gcf,'Position',[50 50 1200 800]);
 set(gcf,'PaperOrientation','landscape');
