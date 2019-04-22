@@ -25,7 +25,7 @@ hold on;
 for i=1:n
     alpha = Fibers{i,1};
     name = Fibers{i,3};
-    Pout = fiber_loss(L, alpha);
+    Pout = fiber_loss(1, L, alpha); % Potencia de entrada en vatios, Longitud y coeficiente de atenuacion
     plot(L,Pout,'LineWidth',2,'DisplayName',name);
     grid on;
     legStr(i) = cellstr(name);
