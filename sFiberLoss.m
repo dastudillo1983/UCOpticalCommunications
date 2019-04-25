@@ -4,6 +4,12 @@
 %            
 % Author: Fabián Astudillo <fabian.astudillos@ucuenca.edu.ec>
 
+set(groot,'defaulttextinterpreter','latex');  
+set(groot, 'defaultAxesTickLabelInterpreter','latex');  
+set(groot, 'defaultLegendInterpreter','latex');
+set(groot,'defaultAxesFontSize',16)
+set(groot, 'DefaultLineLineWidth', 2);
+
 addpath('./functions/');
 
 long = 200;
@@ -25,21 +31,20 @@ for i=1:n
     alpha = Fibers{i,1};
     name = Fibers{i,3};
     Pout = fiber_loss(1, L, alpha); % Potencia de entrada en vatios, Longitud y coeficiente de atenuacion
-    plot(L,Pout,'LineWidth',2,'DisplayName',name);
+    plot(L,Pout,'DisplayName',name);
     grid on;
     legStr(i) = cellstr(name);
 end
 
-legend(legStr,'Location','northeast','fontsize',12, 'Interpreter','latex');
+legend(legStr,'Location','northeast');
 
-title('Attenuation','FontSize', 16, 'Interpreter','latex');
+title('Attenuation');
 set(gca, 'XTick', [0:50:200])
-set(gca,'TickLabelInterpreter','latex')
-set(gca,'Fontsize',16)
+
 %set(gca,'TickLabelFontSize',16)
 
-ylabel('$P_{out}$ ($W$)','FontSize', 16, 'Interpreter','latex');
-xlabel('Long ($Km$)','FontSize', 16, 'Interpreter','latex');
+ylabel('$P_{out}$ ($W$)');
+xlabel('Long ($Km$)');
 
 %goodplot;
 

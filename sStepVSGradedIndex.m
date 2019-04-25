@@ -6,6 +6,12 @@
 %          
 % Author: Fabián Astudillo <fabian.astudillos@ucuenca.edu.ec>
 
+set(groot,'defaulttextinterpreter','latex');  
+set(groot, 'defaultAxesTickLabelInterpreter','latex');  
+set(groot, 'defaultLegendInterpreter','latex');
+set(groot,'defaultAxesFontSize',16)
+set(groot, 'DefaultLineLineWidth', 2);
+
 c = 3*10^8;
 n1 = 1.5;
 delta=0.01;
@@ -30,25 +36,30 @@ B2 = B2./GHz;
 
 L = L./Km;
 
-title('Distance-data rate product','FontSize', 16, 'Interpreter','latex');
+%title('Distance-data rate product','FontSize', 16, 'Interpreter','latex');
+title('Distance-data rate product');
 %set(gca, 'XTick', [0:50:200])
 
-loglog(L,B1,'LineWidth',2);
-ylabel('Data Rate ($Gbps$)','FontSize', 16,'Interpreter','latex')
-xlabel('Distance ($Km$)','FontSize', 16,'Interpreter','latex')
+loglog(L,B1);
+%ylabel('Data Rate ($Gbps$)','FontSize', 16,'Interpreter','latex')
+%xlabel('Distance ($Km$)','FontSize', 16,'Interpreter','latex')
+ylabel('Data Rate ($Gbps$)')
+xlabel('Distance ($Km$)')
+
 grid on 
 hold on 
-loglog(L,B2,'LineWidth',2)
+loglog(L,B2)
 hold off
 
-leg1 = legend('Step-Index','Graded-Index $\alpha$');
-set(leg1,'Interpreter','latex');
-set(leg1,'FontSize',16);
+%leg1 = 
+legend('Step-Index','Graded-Index $\alpha$');
+%set(leg1,'Interpreter','latex');
+%set(leg1,'FontSize',16);
 ytickformat('%.3f');
 xtickformat('%.0f');
 
-set(gca,'TickLabelInterpreter','latex')
-set(gca,'Fontsize',16)
+%set(gca,'TickLabelInterpreter','latex')
+%set(gca,'Fontsize',16)
 
 %xlim([ inf])
 ylim([0.001 10]);
