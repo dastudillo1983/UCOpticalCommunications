@@ -30,19 +30,34 @@ B2 = B2./GHz;
 
 L = L./Km;
 
-loglog(L,B1);
+title('Distance-data rate product','FontSize', 16, 'Interpreter','latex');
+%set(gca, 'XTick', [0:50:200])
+
+loglog(L,B1,'LineWidth',2);
 ylabel('Data Rate ($Gbps$)','FontSize', 16,'Interpreter','latex')
 xlabel('Distance ($Km$)','FontSize', 16,'Interpreter','latex')
 grid on 
 hold on 
-loglog(L,B2)
+loglog(L,B2,'LineWidth',2)
 hold off
 
 leg1 = legend('Step-Index','Graded-Index $\alpha$');
 set(leg1,'Interpreter','latex');
-set(leg1,'FontSize',12);
+set(leg1,'FontSize',16);
 ytickformat('%.3f');
 xtickformat('%.0f');
 
+set(gca,'TickLabelInterpreter','latex')
+set(gca,'Fontsize',16)
+
 %xlim([ inf])
 ylim([0.001 10]);
+
+%set(gcf,'Position',[50 50 1200 800]);
+set(gcf,'PaperOrientation','landscape');
+set(gcf,'PaperPosition', [1 1 28 19]);
+
+%set(gca,'XTickLabel',a,'FontName','Times','fontsize',18);
+
+print (gcf,'-dsvg', 'StepVsGradedIndex.svg');
+svg2pdf('StepVsGradedIndex.svg','StepVsGradedIndex.pdf');

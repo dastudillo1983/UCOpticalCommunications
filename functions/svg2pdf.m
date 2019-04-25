@@ -1,6 +1,6 @@
 function svg2pdf(svgFile, pdfFile)
 
-cmd = 'inkscape %s --export-pdf=%s';
+cmd = '/usr/bin/inkscape %s --export-pdf=%s';
 
 cmd2 = sprintf(cmd, svgFile, pdfFile);
 

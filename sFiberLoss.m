@@ -16,10 +16,12 @@ Fibers = [ {0.25, 1500, 'SMF-28'}; ...
             {2.5, 850, '50/125 (MM50)'}
     ];
 
-[~,n] = size (Fibers);
+[n,~] = size (Fibers);
 legStr = cell(n,1);
 hold on;
+
 for i=1:n
+	fprintf('i is %d\n',i)
     alpha = Fibers{i,1};
     name = Fibers{i,3};
     Pout = fiber_loss(1, L, alpha); % Potencia de entrada en vatios, Longitud y coeficiente de atenuacion
@@ -32,6 +34,10 @@ legend(legStr,'Location','northeast','fontsize',12, 'Interpreter','latex');
 
 title('Attenuation','FontSize', 16, 'Interpreter','latex');
 set(gca, 'XTick', [0:50:200])
+set(gca,'TickLabelInterpreter','latex')
+set(gca,'Fontsize',16)
+%set(gca,'TickLabelFontSize',16)
+
 ylabel('$P_{out}$ ($W$)','FontSize', 16, 'Interpreter','latex');
 xlabel('Long ($Km$)','FontSize', 16, 'Interpreter','latex');
 
@@ -43,5 +49,5 @@ set(gcf,'PaperPosition', [1 1 28 19]);
 
 %set(gca,'XTickLabel',a,'FontName','Times','fontsize',18);
 
-%print (gcf,'-dsvg', 'fiberloss.svg');
-%svg2pdf('fiberloss.svg','fiberloss.pdf');
+print (gcf,'-dsvg', 'fiberloss.svg');
+svg2pdf('fiberloss.svg','fiberloss.pdf');
