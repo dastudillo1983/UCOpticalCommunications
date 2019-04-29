@@ -12,6 +12,8 @@ set(groot, 'defaultLegendInterpreter','latex');
 set(groot,'defaultAxesFontSize',16)
 set(groot, 'DefaultLineLineWidth', 2);
 
+addpath('./functions/');
+
 c = 3*10^8;
 n1 = 1.5;
 delta=0.01;
@@ -20,16 +22,10 @@ Km=1000;
 %n1 = 1.48;
 %n2 = 1.46;
 
-n2=@(n1,delta) n1*(1-delta);
-
-%delta = ((n1-n2)/n1);
-%L = 1000:100:100000;
 L = [1 2 5 10 20 50 100];
 L = L.*Km;
-% LaTeX Equation B=\frac{c\;n_2}{2\;(n_1)^2\;\Delta\;L}$
-B1 = (c*n2(n1,delta))./(2*n1*n1*delta*L);     %step index
-% LaTeX Equation B=\frac{8\;c}{2\;(n_1)\;\Delta^2\;L}$
-B2 = (8*c)./(2*n1*delta*delta*L);   %graded index
+B1 = StepIndex(n1,delta,L);     %step index
+B2 = GradedIndex(n1,delta,L);   %graded index
 
 B1 = B1./GHz;
 B2 = B2./GHz;
